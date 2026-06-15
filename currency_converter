@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Currency Converter</title>
+
+  <style>
+
+    body{
+      font-family: Arial;
+      background: lightblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container{
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0px 0px 10px gray;
+      width: 350px;
+    }
+
+    h1{
+      margin-bottom: 20px;
+    }
+
+    input, select{
+      width: 90%;
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+
+    button{
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      background: blue;
+      color: white;
+    }
+
+    #result{
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Currency Converter</h1>
+
+    <input type="number" id="amount" placeholder="Enter Amount">
+
+    <br>
+
+    <select id="fromCurrency">
+      <option value="USD">USD</option>
+      <option value="INR">INR</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+    </select>
+
+    <select id="toCurrency">
+      <option value="INR">INR</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+    </select>
+
+    <br>
+
+    <button onclick="convertCurrency()">
+      Convert
+    </button>
+
+    <div id="result"></div>
+
+  </div>
+
+  <script>
+
+    function convertCurrency(){
+
+      let amount =
+        document.getElementById("amount").value;
+
+      let from =
+        document.getElementById("fromCurrency").value;
+
+      let to =
+        document.getElementById("toCurrency").value;
+
+      // Sample conversion rates
+
+      let rates = {
+
+        USD: 1,
+
+        INR: 83,
+
+        EUR: 0.92,
+
+        GBP: 0.78
+      };
+
+      let usdAmount = amount / rates[from];
+
+      let convertedAmount =
+        usdAmount * rates[to];
+
+      document.getElementById("result").innerHTML =
+        amount + " " + from + " = " +
+        convertedAmount.toFixed(2) + " " + to;
+    }
+
+  </script>
+
+</body>
+</html>
